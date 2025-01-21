@@ -1,0 +1,90 @@
+{
+	"common": {
+		"name": "sun2000-ems",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"uk": "Початкова версія",
+				"zh-cn": "首次出版"
+			}
+		},
+		"titleLang": {
+			"en": "forecast based battery charging",
+			"de": "Prognose basierter Batterieladung",
+			"ru": "зарядка аккумулятора на основе прогноза",
+			"pt": "carregamento de bateria baseado em previsão",
+			"nl": "Batterij op basis van batterijen",
+			"fr": "Charge de batterie basée sur les prévisions",
+			"it": "Carica della batteria basata su previsione",
+			"es": "carga de batería basada en pronóstico",
+			"pl": "ładowanie akumulatora w oparciu o prognozę",
+			"uk": "прогнозований заряд акумулятора",
+			"zh-cn": "基于预测的电池充电"
+		},
+		"desc": {
+			"en": "forecast based battery charging",
+			"de": "Prognose basierter Batterieladung",
+			"ru": "зарядка аккумулятора на основе прогноза",
+			"pt": "carregamento de bateria baseado em previsão",
+			"nl": "Batterij op basis van batterijen",
+			"fr": "Charge de batterie basée sur les prévisions",
+			"it": "Carica della batteria basata su previsione",
+			"es": "carga de batería basada en pronóstico",
+			"pl": "ładowanie akumulatora w oparciu o prognozę",
+			"uk": "прогнозований заряд акумулятора",
+			"zh-cn": "基于预测的电池充电"
+		},
+		"authors": [
+			"bolliy <stephan@mante.info>"
+		],
+		"keywords": [
+			"sun2000",
+			"ems",
+			"forecast-charging"
+		],
+		"licenseInformation": {
+			"type": "free",
+			"license": "MIT"
+		},
+		"platform": "Javascript/Node.js",
+		"icon": "sun2000-ems.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/bolliy/ioBroker.sun2000-ems/main/admin/sun2000-ems.png",
+		"readme": "https://github.com/bolliy/ioBroker.sun2000-ems/blob/main/README.md",
+		"loglevel": "info",
+		"tier": 3,
+		"mode": "daemon",
+		"type": "energy",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=6.0.11"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": "7.0.23"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": []
+}
