@@ -98,7 +98,7 @@ class Sun2000Ems extends utils.Adapter {
 			// clearInterval(interval1);
 
 			callback();
-		} catch (e) {
+		} catch  {
 			callback();
 		}
 	}
