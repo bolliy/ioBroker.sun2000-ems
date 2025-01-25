@@ -19,38 +19,16 @@ export default [
             'admin/words.js',
             'admin/admin.d.ts',
             '**/adapter-config.d.ts'     
-        ],
-        ignores: [ "admin/words.js", ".dev-server/**", "eslint.config*", "**/adapter-config.d.ts"  ],
+        ]
     },
 
     {
         // you may disable some 'jsdoc' warnings - but using jsdoc is highly recommended
         // as this improves maintainability. jsdoc warnings will not block buiuld process.
-        //rules: {
-            // 'jsdoc/require-jsdoc': 'off',
-        //},
         rules: {
-            indent: ["error", "tab", {
-                SwitchCase: 1,
-            }],
-    
-            "no-console": "off",
-    
-            "no-unused-vars": ["error", {
-                ignoreRestSiblings: true,
-                argsIgnorePattern: "^_",
-            }],
-    
-            "no-var": "error",
-            "no-trailing-spaces": "error",
-            "prefer-const": "error",
-    
-            quotes: ["error", "single", {
-                avoidEscape: true,
-                allowTemplateLiterals: true,
-            }],
-    
-            semi: ["error", "always"],
+             'jsdoc/require-jsdoc': 'off',
+             //https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md#repos-sticky-header
+             'jsdoc/require-param-description': ["error"|"warn", {"contexts":["any"]}]
         },
     },
     
