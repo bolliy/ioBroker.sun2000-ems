@@ -10,6 +10,11 @@
 		// check JS files
 		"allowJs": true,
 		"checkJs": true,
+		"module": "ES6",
+		//"module": "CommonJS",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+
 
 		// This is necessary for the automatic typing of the adapter config
 		"resolveJsonModule": true,
@@ -24,6 +29,8 @@
 		// "noUnusedLocals": true,
 		// "noUnusedParameters": true,
 		"useUnknownInCatchVariables": false,
+		// Consider targetting es2019 or higher if you only support Node.js 12+
+        "target": "es2022"
 
 	},
 	"include": [
