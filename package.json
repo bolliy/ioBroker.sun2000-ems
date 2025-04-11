@@ -15,7 +15,6 @@
     "ems",
     "forecast-charging"
   ],
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/bolliy/ioBroker.sun2000-ems.git"
