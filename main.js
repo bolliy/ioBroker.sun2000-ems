@@ -11,6 +11,9 @@
 import * as utils from '@iobroker/adapter-core';
 import * as url from 'node:url';
 
+import ConfigMap from './lib/controls/config_map.js';
+import Pvforecast from './lib/pvforecast.js';
+
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
@@ -23,6 +26,10 @@ class Sun2000Ems extends utils.Adapter {
 			...options,
 			name: 'sun2000-ems',
 		});
+
+		this.control = new ConfigMap(this);
+		this.pvforecast = null;
+
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
@@ -85,6 +92,35 @@ class Sun2000Ems extends utils.Adapter {
 
 		result = await this.checkGroupAsync('admin', 'admin');
 		this.log.info(`check group user admin group admin: ${result}`);
+
+		await this.StartProcess();
+	}
+
+	async initPath() {
+		await this.extendObject('control', {
+			type: 'channel',
+			common: {
+				name: 'channel control',
+			},
+			native: {},
+		});
+
+		await this.extendObject('pvforecast', {
+			type: 'channel',
+			common: {
+				name: 'channel pvforecast',
+			},
+			native: {},
+		});
+	}
+
+	async StartProcess() {
+		await this.initPath();
+		await this.control.init();
+
+		this.pvforecast = new Pvforecast(this);
+		await this.pvforecast.update();
+		this.log.info(JSON.stringify(this.pvforecast.jsonData));
 	}
 
 	/**

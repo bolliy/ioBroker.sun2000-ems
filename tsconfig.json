@@ -27,6 +27,7 @@
 		// "strictPropertyInitialization": true,
 		// "strictBindCallApply": true,
 		"noImplicitAny": false,
+		// "noImplicitOverride": true,
 		// "noUnusedLocals": true,
 		// "noUnusedParameters": true,
 		"useUnknownInCatchVariables": false,
