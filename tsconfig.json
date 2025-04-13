@@ -12,7 +12,8 @@
 		"checkJs": true,
 		//"module": "ES6",
 		//"module": "CommonJS",
-		"module": "es2020",
+		//"module": "es2020",
+		"module": "ESNext",
         "moduleResolution": "node",
         "esModuleInterop": true,
 
@@ -38,7 +39,7 @@
 	"include": [
 		"**/*.js",
 		"**/*.d.ts"
-	],
+, "test/integration.js", "test/package.js", "test/mocha.setup.js", "main.test.cjs", "lib/pvforecast.mjs", "main.mjs", "lib/controls/config_map.mjs"	],
 	"exclude": [
 		"node_modules/**",
 		"widgets/**"

@@ -11,8 +11,8 @@
 import * as utils from '@iobroker/adapter-core';
 import * as url from 'node:url';
 
-import ConfigMap from './lib/controls/config_map.js';
-import Pvforecast from './lib/pvforecast.js';
+import ConfigMap from './lib/controls/config_map.mjs';
+import Pvforecast from './lib/pvforecast.mjs';
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
