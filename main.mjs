@@ -121,6 +121,8 @@ class Sun2000Ems extends utils.Adapter {
 		this.pvforecast = new Pvforecast(this);
 		await this.pvforecast.update();
 		this.log.info(JSON.stringify(this.pvforecast.jsonData));
+		const obj1 = await this.getObjectAsync(`system.adapter.admin.0`);
+		this.log.debug(` t1 ${JSON.stringify(obj1)}`);
 	}
 
 	/**
