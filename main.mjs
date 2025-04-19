@@ -12,7 +12,7 @@ import * as utils from '@iobroker/adapter-core';
 import * as url from 'node:url';
 
 import ConfigMap from './lib/controls/config_map.mjs';
-import Pvforecast from './lib/pvforecast.mjs';
+import LoadTable from './lib/loadtable.mjs';
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -28,7 +28,7 @@ class Sun2000Ems extends utils.Adapter {
 		});
 
 		this.control = new ConfigMap(this);
-		this.pvforecast = null;
+		this.load = null;
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -113,16 +113,13 @@ class Sun2000Ems extends utils.Adapter {
 			native: {},
 		});
 	}
-
 	async StartProcess() {
 		await this.initPath();
 		await this.control.init();
 
-		this.pvforecast = new Pvforecast(this);
-		await this.pvforecast.update();
-		this.log.info(JSON.stringify(this.pvforecast.jsonData));
-		const obj1 = await this.getObjectAsync(`system.adapter.admin.0`);
-		this.log.debug(` t1 ${JSON.stringify(obj1)}`);
+		this.load = new LoadTable(this);
+		await this.load.update();
+		this.log.info(JSON.stringify(this.load.jsonData));
 	}
 
 	/**
