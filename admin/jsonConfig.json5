@@ -1,0 +1,67 @@
+{
+
+	"i18n": true,
+    "type": "tabs",
+    "tabsStyle": {
+        "width": "calc(100% - 100px)"
+    },
+    "items": {
+        "mainTab": {
+            "type": "panel",
+            "label": "Main settings",
+            "items": {
+                "donateTxt": {
+                    "type": "staticText",
+                    "text": "donateTxt",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+				hdrSun2000: {
+                    newLine: true,
+                    type: 'header',
+                    text: 'sun2000 Adapter',
+                    size: 2
+                },
+				instanceSun2000: {
+					newLine: true,
+					type: 'instance',
+					adapter: 'sun2000',
+					all: false,
+					xs: 12,
+					sm: 12,
+					md: 4,
+					lg: 4,
+					xl: 4,
+					label: 'sun2000 Instance',
+					help: 'Please choose the sun2000 instance',
+					//hidden: "data.msgService !== 'jarvis' && !data.instanceSun2000",
+					hideOnlyControl: false,
+				},
+                hdrPvforecast: {
+                    newLine: true,
+                    type: 'header',
+                    text: 'PVForecast Adapter',
+                    size: 2
+                },
+				instancePvforecast: {
+					newLine: true,
+					type: 'instance',
+					adapter: 'pvforecast',
+					all: false,
+					xs: 12,
+					sm: 12,
+					md: 4,
+					lg: 4,
+					xl: 4,
+					label: 'pvforecast Instance',
+					help: 'Please choose the pvforecast instance',
+					//hidden: "data.msgService !== 'jarvis' && !data.instanceSun2000",
+					hideOnlyControl: false,
+				},
+            }
+        }
+    }
+}

@@ -12,7 +12,7 @@ import * as utils from '@iobroker/adapter-core';
 import * as url from 'node:url';
 
 import ConfigMap from './lib/controls/config_map.mjs';
-import LoadTable from './lib/loadtable.mjs';
+import EMS from './lib/ems.mjs';
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -28,7 +28,7 @@ class Sun2000Ems extends utils.Adapter {
 		});
 
 		this.control = new ConfigMap(this);
-		this.load = null;
+		this.ems = null;
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -45,53 +45,8 @@ class Sun2000Ems extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info(`config option1: ${this.config.option1}`);
-		this.log.info(`config option2: ${this.config.option2}`);
-
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		*/
-		await this.setObjectNotExistsAsync('testVariable', {
-			type: 'state',
-			common: {
-				name: 'testVariable',
-				type: 'boolean',
-				role: 'indicator',
-				read: true,
-				write: true,
-			},
-			native: {},
-		});
-
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates('testVariable');
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates('lights.*');
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates('*');
-
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync('testVariable', true);
-
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		await this.setStateAsync('testVariable', { val: true, ack: true });
-
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
-
-		// examples for the checkPassword/checkGroup functions
-		let result = await this.checkPasswordAsync('admin', 'iobroker');
-		this.log.info(`check user admin pw iobroker: ${result}`);
-
-		result = await this.checkGroupAsync('admin', 'admin');
-		this.log.info(`check group user admin group admin: ${result}`);
+		this.log.info(`config : ${this.config.instanceSun2000}`);
+		this.log.info(`config option2: ${this.config.instancePvforecast}`);
 
 		await this.StartProcess();
 	}
@@ -113,13 +68,12 @@ class Sun2000Ems extends utils.Adapter {
 			native: {},
 		});
 	}
+
 	async StartProcess() {
 		await this.initPath();
 		await this.control.init();
-
-		this.load = new LoadTable(this);
-		await this.load.update();
-		this.log.info(JSON.stringify(this.load.jsonData));
+		this.ems = new EMS(this);
+		this.ems.dataPolling();
 	}
 
 	/**
@@ -129,12 +83,8 @@ class Sun2000Ems extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
-			// Here you must clear all timeouts or intervals that may still be active
-			// clearTimeout(timeout1);
-			// clearTimeout(timeout2);
-			// ...
-			// clearInterval(interval1);
-
+			this.log.info('cleaned everything up...');
+			this.ems?.destroy();
 			callback();
 		} catch {
 			callback();
