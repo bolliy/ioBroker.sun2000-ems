@@ -41,14 +41,13 @@ class Sun2000Ems extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		// Initialize your adapter here
-
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info(`config : ${this.config.instanceSun2000}`);
-		this.log.info(`config option2: ${this.config.instancePvforecast}`);
-
-		await this.StartProcess();
+		if (this.config.instancePvforecast != 'none' && this.config.instanceSun2000 != 'none') {
+			await this.StartProcess();
+		} else {
+			this.adapterDisable('*** Adapter deactivated, Adapter Settings incomplete! ***');
+		}
 	}
 
 	async initPath() {
@@ -74,6 +73,11 @@ class Sun2000Ems extends utils.Adapter {
 		await this.control.init();
 		this.ems = new EMS(this);
 		this.ems.dataPolling();
+	}
+
+	adapterDisable(errMsg) {
+		this.log.error(errMsg);
+		this.setForeignState(`system.adapter.${this.namespace}.alive`, false);
 	}
 
 	/**
