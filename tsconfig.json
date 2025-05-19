@@ -38,7 +38,7 @@
 	},
 	"include": [
 		"**/*.js",
-		"**/*.d.ts"
+		"**/*.d.ts",
 , "test/integration.js", "test/package.js", "test/mocha.setup.js", "main.test.cjs", "lib/pvforecast.mjs", "main.mjs", "lib/controls/config_map.mjs"	],
 	"exclude": [
 		"node_modules/**",

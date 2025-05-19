@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch ioBroker Adapter",
+      "skipFiles": ["<node_internals>/**"],
+      //"args": ["--debug", "0"],
+      "args": ["--instance", "0", "--force", "--logs", "--debug"],
+      //"program": "node_modules/iobroker.sun2000-ems/main.mjs",
+      "program": "${workspaceFolder}/main.mjs",
+      //"cwd": "${workspaceFolder}/.dev-server/default",
+      "env": {"NODE_PATH":"${workspaceFolder}/.dev-server/default/node_modules"},
+      //"cwd": "${workspaceFolder}",
+      "stopOnEntry": true,
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
+    }
+  ]
+}
