@@ -62,6 +62,101 @@
 					hideOnlyControl: false,
 				},
             }
+        },
+        load: {
+                type: 'panel',
+                label: 'Loadtable',
+                items: {
+                    loadHeader: {
+                        newLine: true,
+                        type: 'header',
+                        text: 'Load Table',
+                        size: 2,
+                        hideOnlyControl: false,
+                    },
+                    "introTable2Txt2": {
+                        "type": "staticText",
+                        "text": "This is a table with some preloaded and fixed rows; no deletes or additions.<br>Configure content at io-package.json.",
+                        "newLine": true,
+                        "xs": 12,
+                        "sm": 12,
+                        "md": 12,
+                        "lg": 6,
+                        "xl": 6
+                    },
+                    "loadTable": {
+                        "type": "table",
+                        "newLine": true,
+                        "sm": 12,
+                        "md": 12,
+                        "lg": 12,
+                        "xl": 12,
+                        "label": "",
+                        noDelete: false,
+                        uniqueColumns: ["hour"],
+                        "items": [
+                            {
+                                type: "select",
+                                attr: "hour",
+                                "width": "33% ",
+                                "title": "until Hour",
+                                "tooltip": "Click on it",
+                                "options":[
+                                    {"label": "01:00", "value":1},
+                                    {"label": "02:00", "value":2},
+                                    {"label": "03:00", "value":3},
+                                    {"label": "04:00", "value":4},
+                                    {"label": "05:00", "value":5},
+                                    {"label": "06:00", "value":6},
+                                    {"label": "07:00", "value":7},
+                                    {"label": "08:00", "value":8},
+                                    {"label": "09:00", "value":9},
+                                    {"label": "10:00", "value":10},
+                                    {"label": "11:00", "value":11},
+                                    {"label": "12:00", "value":12},
+                                    {"label": "13:00", "value":13},
+                                    {"label": "14:00", "value":14},
+                                    {"label": "15:00", "value":15},
+                                    {"label": "16:00", "value":16},
+                                    {"label": "17:00", "value":17},
+                                    {"label": "18:00", "value":18},
+                                    {"label": "19:00", "value":19},
+                                    {"label": "20:00", "value":20},
+                                    {"label": "21:00", "value":21},
+                                    {"label": "22:00", "value":22},
+                                    {"label": "23:00", "value":23},
+                                    {"label": "24:00", "value":24},
+                                ],
+                                "filter": false,
+                                "sort": true,
+                            },
+                            {
+                                "type": "number",
+                                "attr": "consumption",
+                                "width": "33%",
+                                "title": "Comsumption [W]",
+                                "tooltip": "enter value",
+                                "filter": false,
+                                "sort": false,
+                                "readOnly": false,
+                                "min": 0,
+                                "step": 50,
+                                "default": 0
+                            },
+                            {
+                                "type": "text",
+                                "attr": "description",
+                                "width": "33%",
+                                "title": "Description",
+                                "tooltip": "enter any text",
+                                "filter": false,
+                                "sort": false,
+                                "default": ""
+                            }
+                        ]
+                    }
+                }
         }
+
     }
 }

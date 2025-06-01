@@ -42,6 +42,7 @@ class Sun2000Ems extends utils.Adapter {
 	async onReady() {
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
+		this.log.info(`Adapter started. Config LoadTable: ${JSON.stringify(this.config.loadTable, null, 2)}`);
 		if (this.config.instancePvforecast != 'none' && this.config.instanceSun2000 != 'none') {
 			await this.StartProcess();
 		} else {

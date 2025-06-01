@@ -84,7 +84,24 @@
 	},
 	"native": {
 		"instanceSun2000": "",
-		"instancePvforecast": ""
+		"instancePvforecast": "",
+		"loadTable": [
+					{
+						"hour": 6,
+						"consumption": 100,
+						"description": "Night time"
+					},
+					{
+						"hour": 22,
+						"consumption": 650,
+						"describtion": "Day time"
+					},
+					{
+						"hour": 24,
+						"consumption": 100,
+						"description": "Afternoon"
+					}
+					]
 	},
 	"objects": [],
 	"instanceObjects": []
