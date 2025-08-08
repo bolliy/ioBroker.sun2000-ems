@@ -131,6 +131,18 @@
                                 "sort": true,
                             },
                             {
+                                type: "timePicker",
+                                attr: "hour2",
+                                width: "33%",
+                                title: "From Time",
+                                tooltip: "Click on it",
+                                format: "HH:mm",
+                                views: ['hours', 'minutes'],
+                                timeSteps: { hours: 1, minutes: 15 },
+                                returnFormat: "HH:mm",
+                                "sort": true
+                            },
+                            {
                                 "type": "number",
                                 "attr": "consumption",
                                 "width": "33%",
