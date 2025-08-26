@@ -1,6 +1,68 @@
 {
   "version": "0.2.0",
   "configurations": [
+     {
+           //dev-server run --noStart
+           //node --inspect=0.0.0.0:9229 .dev-server/default/node_modules/iobroker.sun2000-ems/main.mjs --logs --force --debug
+            "name": "Attach to remote",
+            "port": 9229,
+            "request": "attach",
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/.dev-server/default/node_modules/**"
+            ],
+            "restart": true,
+            "type": "node",
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000-ems"
+    },
+    {
+           //dev-server watch
+            "name": "Attach to remote - old",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [
+              "<node_internals>/**"
+            ],
+            "resolveSourceMapLocations": [
+               "${workspaceFolder}/**",
+                //"${workspaceFolder}/.dev-server/default/node_modules/**",
+                "!${workspaceFolder}/node_modules/**"
+            ],
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000-ems",
+            "restart": true,
+            "type": "node"
+    },
+    {
+      "type": "node",
+            "request": "launch",
+            "name": "Launch ioBroker Adapter test 1",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.sun2000-ems/main.mjs",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+            "console": "integratedTerminal",
+            "outputCapture": "std",
+            "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"],
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000-ems"
+    },
+    {
+      "type": "node",
+            "request": "launch",
+            "name": "default Launch ioBroker Adapter ",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.sun2000-ems/main.mjs",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+            "console": "internalConsole",
+            "outputCapture": "std",
+            "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
+    },
     {
       "type": "node",
       "request": "launch",
@@ -8,9 +70,9 @@
       "skipFiles": ["<node_internals>/**"],
       //"args": ["--debug", "0"],
       "args": ["--instance", "0", "--force", "--logs", "--debug"],
-      //"program": "node_modules/iobroker.sun2000-ems/main.mjs",
-      "program": "${workspaceFolder}/main.mjs",
-      //"cwd": "${workspaceFolder}/.dev-server/default",
+      "program": "node_modules/iobroker.sun2000-ems/main.mjs",
+      //"program": "${workspaceFolder}/main.mjs",
+      "cwd": "${workspaceFolder}/.dev-server/default",
       "env": {"NODE_PATH":"${workspaceFolder}/.dev-server/default/node_modules"},
       //"cwd": "${workspaceFolder}",
       "stopOnEntry": true,
@@ -19,4 +81,5 @@
       "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
     }
   ]
+  //node --inspect-brk=localhost:9229 ./node_modules/iobroker.sun2000-ems/main.mjs
 }

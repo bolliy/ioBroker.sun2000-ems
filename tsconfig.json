@@ -39,7 +39,7 @@
 	"include": [
 		"**/*.js",
 		"**/*.d.ts"
-	],
+, "main.mjs"	],
 	"exclude": [
 		"node_modules/**",
 		"widgets/**"
