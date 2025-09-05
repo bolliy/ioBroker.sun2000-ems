@@ -3,7 +3,8 @@
   "configurations": [
      {
            //dev-server run --noStart
-           //node --inspect=0.0.0.0:9229 .dev-server/default/node_modules/iobroker.sun2000-ems/main.mjs --logs --force --debug
+           //dev-server upload
+           //node --inspect=0.0.0.0:9229 --inspect-wait .dev-server/default/node_modules/iobroker.sun2000-ems/main.mjs --logs --force --debug
             "name": "Attach to remote",
             "port": 9229,
             "request": "attach",

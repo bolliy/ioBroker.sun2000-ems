@@ -19,60 +19,60 @@
                     "lg": 4,
                     "xl": 4
                 },
-				hdrSun2000: {
-                    newLine: true,
-                    type: 'header',
-                    text: 'sun2000 Adapter',
-                    size: 2
+				"hdrSun2000": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "sun2000 Adapter",
+                    "size": 2
                 },
-				instanceSun2000: {
-					newLine: true,
-					type: 'instance',
-					adapter: 'sun2000',
-					all: false,
-					xs: 12,
-					sm: 12,
-					md: 4,
-					lg: 4,
-					xl: 4,
-					label: 'sun2000 Instance',
-					help: 'Please choose the sun2000 instance',
-					//hidden: "data.msgService !== 'jarvis' && !data.instanceSun2000",
-					hideOnlyControl: false,
+				"instanceSun2000": {
+					"newLine": true,
+					"type": "instance",
+                    "adapter": "sun2000",
+                    "all": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4,
+                    "label": "sun2000 Instance",
+                    "help": "Please choose the sun2000 instance",
+                    //hidden: "data.msgService !== 'jarvis' && !data.instanceSun2000",
+                    "hideOnlyControl": false
 				},
-                hdrPvforecast: {
-                    newLine: true,
-                    type: 'header',
-                    text: 'PVForecast Adapter',
-                    size: 2
+                "hdrPvforecast": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "PVForecast Adapter",
+                    "size": 2
                 },
-				instancePvforecast: {
-					newLine: true,
-					type: 'instance',
-					adapter: 'pvforecast',
-					all: false,
-					xs: 12,
-					sm: 12,
-					md: 4,
-					lg: 4,
-					xl: 4,
-					label: 'pvforecast Instance',
-					help: 'Please choose the pvforecast instance',
-					//hidden: "data.msgService !== 'jarvis' && !data.instanceSun2000",
-					hideOnlyControl: false,
-				},
+                "instancePvforecast": {
+                    "newLine": true,
+                    "type": "instance",
+                    "adapter": "pvforecast",
+                    "all": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4,
+                    "label": "pvforecast Instance",
+                    "help": "Please choose the pvforecast instance",
+                    //hidden: "data.msgService !== 'jarvis' && !data.instanceSun2000",
+                    "hideOnlyControl": false
+                }
             }
         },
-        load: {
-                type: 'panel',
-                label: 'Loadtable',
-                items: {
-                    loadHeader: {
-                        newLine: true,
-                        type: 'header',
-                        text: 'Load Table',
-                        size: 2,
-                        hideOnlyControl: false,
+        "load": {
+                "type": "panel",
+                "label": "Loadtable",
+                "items": {
+                    "loadHeader": {
+                        "newLine": true,
+                        "type": "header",
+                        "text": "Load Table",
+                        "size": 2,
+                        "hideOnlyControl": false
                     },
                     "introTable2Txt2": {
                         "type": "staticText",
@@ -92,12 +92,12 @@
                         "lg": 12,
                         "xl": 12,
                         "label": "",
-                        noDelete: false,
-                        uniqueColumns: ["hour"],
+                        "noDelete": false,
+                        "uniqueColumns": ["hour"],
                         "items": [
                             {
-                                type: "select",
-                                attr: "hour",
+                                "type": "select",
+                                "attr": "hour",
                                 "width": "33% ",
                                 "title": "until Hour",
                                 "tooltip": "Click on it",
@@ -125,21 +125,21 @@
                                     {"label": "21:00", "value":21},
                                     {"label": "22:00", "value":22},
                                     {"label": "23:00", "value":23},
-                                    {"label": "24:00", "value":24},
+                                    {"label": "24:00", "value":24}
                                 ],
                                 "filter": false,
-                                "sort": true,
+                                "sort": true
                             },
                             {
-                                type: "timePicker",
-                                attr: "hour2",
-                                width: "33%",
-                                title: "From Time",
-                                tooltip: "Click on it",
-                                format: "HH:mm",
-                                views: ['hours', 'minutes'],
-                                timeSteps: { hours: 1, minutes: 15 },
-                                returnFormat: "HH:mm",
+                                "type": "timePicker",
+                                "attr": "hour2",
+                                "width": "33%",
+                                "title": "From Time",
+                                "tooltip": "Click on it",
+                                "format": "HH:mm",
+                                "views": ["hours", "minutes"],
+                                "timeSteps": { "hours": 1, "minutes": 60 },
+                                "returnFormat": "HH:mm",
                                 "sort": true
                             },
                             {
