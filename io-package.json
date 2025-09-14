@@ -87,17 +87,17 @@
 		"instancePvforecast": "",
 		"loadTable": [
 					{
-						"hour": 6,
+						"fromTime": "00:00",
 						"consumption": 100,
 						"description": "Night time"
 					},
 					{
-						"hour": 22,
+						"fromTime": "06:00",
 						"consumption": 650,
-						"describtion": "Day time"
+						"description": "Day time"
 					},
 					{
-						"hour": 24,
+						"untilTime": "22:00",
 						"consumption": 100,
 						"description": "Afternoon"
 					}
