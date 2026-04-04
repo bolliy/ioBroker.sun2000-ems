@@ -13,8 +13,9 @@
 		//"module": "ES6",
 		//"module": "CommonJS",
 		//"module": "es2020",
-		"module": "ESNext",
-        "moduleResolution": "node",
+		//"module": "ESNext",
+		"module": "nodenext",
+        "moduleResolution": "NodeNext",
         "esModuleInterop": true,
 
 
@@ -33,7 +34,7 @@
 		// "noUnusedParameters": true,
 		"useUnknownInCatchVariables": false,
 		// Consider targetting es2019 or higher if you only support Node.js 12+
-        "target": "es2022"
+        "target": "es2023"
 
 	},
 	"include": [
