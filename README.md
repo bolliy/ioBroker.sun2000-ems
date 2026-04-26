@@ -16,6 +16,33 @@ forecast based battery charging using the sun2000 adapter
 
 !! THIS ADAPTER IS STILL REPRESENTING AN DEVELOPMENT STATE !!!
 
+Is a ioBroker adapter that provides a **Solar Inverter (Sun2000) Home Energy Management System (EMS)**. It works with the **Sun2000** inverter and **Tibber** for price data.
+
+## Features
+
+- **Battery management** – Optimizes charging and discharging based on forecasted solar production and electricity prices.
+- **Price‑aware charging** – Uses Tibber price data to schedule charging when electricity is cheap.
+- **Grid‑friendly feed‑in** – Adjusts surplus feed‑in to avoid over‑loading the grid.
+- **Automatic load handling** – Balances load and battery usage to keep the system within inverter limits.
+- **Configurable thresholds** – Allows setting of charge/discharge cut‑off capacities.
+
+## Usage
+
+The adapter creates several states under `sun2000.0`:
+
+- `inverter.*` – Current inverter status, voltage, current, etc.
+- `battery.*` – Battery state of charge, charge/discharge power, and limits.
+- `prices.*` – Latest Tibber price information.
+- `control.*` – Commands to start/stop charging, set limits, etc.
+
+The EMS runs a minute‑based loop that:
+
+1. Reads current load, PV production, and battery state.
+2. Simulates future SOC based on forecasted PV.
+3. Determines a safe minimum SOC (`surplusMinSoc`) using a clamped calculation with a 1 % safety margin.
+4. Sets the inverter’s surplus‑min‑SOC and buffer‑SOC values.
+5. Adjusts charging/discharging according to price thresholds and inverter limits.
+
 ## Changelog
 <!--
 	Placeholder for the next version (at the beginning of the line):
@@ -24,6 +51,15 @@ forecast based battery charging using the sun2000 adapter
 
 ### **WORK IN PROGRESS**
 * (bolliy) initial release
+* Refactored surplus‑SOC logic:
+  - Added a `clamp` helper function for safe value limits.
+  - Introduced `SURPLUS_OFFSET` (1 % safety margin).
+  - Calculated `surplusMinSoc` using `clamp` with clear naming.
+  - Removed duplicate `setSurplusMinSoc` call.
+  - Unified and clarified comments (e.g., “Plausibility clamps for the buffer SOC”).
+- Fixed typo `suplusMinSoc` → `surplusMinSoc`.
+- Cleaned up irregular whitespace and tabs, eliminating ESLint errors.
+- Improved overall code readability and maintainability.
 
 ## License
 MIT License
